@@ -65,10 +65,10 @@ read ipaddr
 echo -n "Please Enter your masternode genkey respond and Hit [ENTER]: "
 read mngenkey
 
-echo -e "rpcuser=bsdmasternodeservice2387645 \nrpcpassword=$usrpas \nrpcport=8886 \nrpcallowip=127.0.0.1 \nmasternodeaddr=$ipaddr:8886 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \npromode=1 \nexternalip=$ipaddr:8886 \nmasternodeprivkey=$mngenkey \n" > ~/.bitsend/bitsend.conf
+echo -e "rpcuser=bsdmasternodeservice2387645 \nrpcpassword=$usrpas \nrpcallowip=127.0.0.1 \nmasternodeaddr=$ipaddr:8886 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \npromode=1 \nexternalip=$ipaddr:8886 \nmasternodeprivkey=$mngenkey \n" > ~/.bitsend/bitsend.conf
 cd .bitsend
 
-wget http://mybitsend.com/bootstrap.tar.gz
+wget https://www.mybitsend.com/bootstrap.tar.gz
 
 tar -xvzf bootstrap.tar.gz
 echo '*** Done 4/5 ***'
@@ -76,9 +76,9 @@ sleep 2
 echo '*** Step 5/5 ***'
 echo '*** Last Server Start also Wallet Sync ***'
 echo 'After 1 minute you will see the 'getinfo' output from the RPC Server...'
-bitsennd
+bitsendd
 sleep 60
-bitsennd getinfo
+bitsendd getinfo
 sleep 2
 echo 'Have fun with your Masternode !'
 sleep 2
