@@ -1,6 +1,6 @@
 
 #!/bin/bash
-# This script will install all needed stuff to run a BitSend (BSD) Masternode.
+# This script will install all required stuff to run a BitSend (BSD) Masternode.
 # BitSend Repo : https://github.com/LIMXTEC/BitSend
 # !! THIS SCRIPT NEED TO RUN AS ROOT !!
 ######################################################################
