@@ -43,7 +43,7 @@ cd BitSend
 ./autogen.sh
 ./configure
 make
-cd /src
+cd BitSend/src
 strip bitsendd
 cp bitsendd /usr/local/bin
 /sbin/iptables -A INPUT -i eth0 -p tcp --dport 8886 -j ACCEPT
