@@ -15,7 +15,7 @@ echo '*** Step 1/5 ***'
 echo 'Running updates and install required packages'
 sleep 3
 
-dd if=/dev/zero of=/mnt/myswap.swap bs=2M count=1000 -y
-mkswap /mnt/myswap.swap -y
-swapon /mnt/myswap.swap -y
+dd if=/dev/zero of=/mnt/myswap.swap bs=2M count=1000
+mkswap /mnt/myswap.swap
+swapon /mnt/myswap.swap
 
