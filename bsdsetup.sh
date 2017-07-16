@@ -76,11 +76,13 @@ echo '*** Done 4/5 ***'
 sleep 2
 echo '*** Step 5/5 ***'
 echo '*** Last Server Start also Wallet Sync ***'
-echo 'After 1 minute you will see the 'getinfo' output from the RPC Server... Have fun with your Masternode !'
+echo 'After 1 minute you will see the 'getinfo' output from the RPC Server...'
 sleep 60
 bitsennd getinfo
-
-
+sleep 2
+echo 'Have fun with your Masternode !'
+sleep 2
+echo '*** Done 5/5 ***'
 
 
 
