@@ -65,7 +65,7 @@ read ipaddr
 echo -n "Please Enter your masternode genkey respond and Hit [ENTER]: "
 read mngenkey
 
-echo -e "rpcuser=bsdmasternodeservice2387645 \nrpcpassword=$usrpas \nrpcport=8886 \nrpcallowip=127.0.0.1 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \promode=1 \externalip=$ipaddr:8886 \nmasternodeprivkey=$mngenkey \n" > ~/.bitsend/bitsend.conf
+echo -e "rpcuser=bsdmasternodeservice2387645 \nrpcpassword=$usrpas \nrpcport=8886 \nrpcallowip=127.0.0.1 \nmasternodeaddr=$ipaddr:8886 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \npromode=1 \nexternalip=$ipaddr:8886 \nmasternodeprivkey=$mngenkey \n" > ~/.bitsend/bitsend.conf
 cd .bitsend
 
 wget http://mybitsend.com/bootstrap.tar.gz
