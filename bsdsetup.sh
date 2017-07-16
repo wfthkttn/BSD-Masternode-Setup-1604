@@ -43,6 +43,8 @@ cd BitSend
 ./autogen.sh
 ./configure
 make
+
+cd
 cd BitSend/src
 strip bitsendd
 cp bitsendd /usr/local/bin
@@ -56,7 +58,7 @@ echo '*** Configure bitsend.conf and download and import bootstrap file ***'
 sleep 2
 
 bitsendd
-sleep 5
+sleep 3
 
 echo -n "Please Enter a STRONG Password or copy & paste the password generated for you above and Hit [ENTER]: "
 read usrpas
