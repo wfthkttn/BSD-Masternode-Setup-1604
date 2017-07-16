@@ -33,7 +33,6 @@ apt-get update -y
 apt-get install libdb4.8-dev libdb4.8++-dev -y
 curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
 source ~/.profile
-nvm install 0.10.25
 echo '*** Done 2/5 ***'
 sleep 1
 echo '*** Step 3/5 ***'
@@ -83,8 +82,3 @@ sleep 2
 echo 'Have fun with your Masternode !'
 sleep 2
 echo '*** Done 5/5 ***'
-
-
-
-
-
