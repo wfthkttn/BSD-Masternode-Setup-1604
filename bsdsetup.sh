@@ -56,7 +56,7 @@ echo '*** Configure bitsend.conf and download and import bootstrap file ***'
 sleep 2
 
 bitsendd
-sleep 10
+sleep 5
 
 echo -n "Please Enter a STRONG Password or copy & paste the password generated for you above and Hit [ENTER]: "
 read usrpas
