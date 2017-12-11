@@ -7,11 +7,16 @@
 
 clear
 echo "*********** Welcome to the BitSend (BSD) Masternode Setup Script ***********"
-echo 'This script will install all required updates & package for Ubuntu 14.04 !'
+echo 'This script will install all required updates & package for Ubuntu 16.04 !'
 echo 'Clone & Compile the BSD Wallet also help you on first setup and sync'
 echo '****************************************************************************'
 sleep 3
 echo '*** Step 1/5 ***'
+echo -n "Please Enter new password for [bitsend] user and Hit [ENTER]: "
+read BSDPASSWORD
+adduser --disabled-password --gecos "" bitsend 
+usermod -a -G sudo bitsend
+echo bitsend:$BSDPASSWORD | chpasswd
 echo '*** Creating 2GB Swapfile ***'
 sleep 1
 sudo dd if=/dev/zero of=/swapfile bs=1M count=2048
@@ -50,7 +55,8 @@ cd BitSend/src
 strip bitsendd
 cp bitsendd /usr/local/bin
 strip bitsend-cli
-cp bitsend-cli /usr/local/bin
+sudo cp bitsend-cli /usr/local/bin
+sudo chmod 775 /usr/local/bin/bitsend*
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw allow 8886/tcp
@@ -70,7 +76,7 @@ echo -e "[Unit]\nDescription=BitSend's distributed currency daemon\nAfter=networ
 sleep 2
 echo -n "Please Enter your masternode genkey respond and Hit [ENTER]: "
 read mngenkey
-echo -e "rpcuser=bsdmasternodefaceRolliNgForUseRnamEpjasda4567 \nrpcpassword=$(openssl rand -base64 32) \nrpcallowip=127.0.0.1 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \npromode=1 \nmasternodeprivkey=$mngenkey \naddnode=107.170.2.241 \naddnode=45.58.51.22 \naddnode=104.207.131.249 \naddnode=68.197.13.94 \naddnode=109.30.168.16 \naddnode=31.41.247.133 \naddnode=37.120.190.76 \n" > ~/.bitsend/bitsend.conf
+echo -e "rpcuser=bsdmasternode$(openssl rand -base64 32) \nrpcpassword=$(openssl rand -base64 32) \nrpcallowip=127.0.0.1 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \npromode=1 \nmasternodeprivkey=$mngenkey \naddnode=107.170.2.241 \naddnode=45.58.51.22 \naddnode=104.207.131.249 \naddnode=68.197.13.94 \naddnode=109.30.168.16 \naddnode=31.41.247.133 \naddnode=37.120.190.76 \n" > ~/.bitsend/bitsend.conf
 cd .bitsend
 
 wget https://www.mybitsend.com/bootstrap.tar.gz
@@ -83,7 +89,7 @@ echo '*** Last Server Start also Wallet Sync ***'
 echo 'After 1 minute you will see the 'getinfo' output from the RPC Server...'
 systemctl start bitsendd
 sleep 60
-bitsendd getinfo
+bitsend-cli getinfo
 sleep 2
 echo 'Have fun with your Masternode !'
 sleep 2
