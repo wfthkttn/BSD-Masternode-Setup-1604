@@ -35,7 +35,7 @@ apt-get install build-essential libtool autotools-dev autoconf automake pkg-conf
 apt-get install libboost-all-dev git npm nodejs nodejs-legacy libminiupnpc-dev redis-server -y
 apt-get install software-properties-common -y
 apt-get install libevent-dev -y
-add-apt-repository ppa:bitcoin/bitcoin
+add-apt-repository ppa:bitcoin/bitcoin -y
 apt-get update -y
 apt-get upgrade -y
 apt-get install libdb4.8-dev libdb4.8++-dev -y
@@ -64,7 +64,7 @@ ufw default deny incoming
 ufw default allow outgoing 
 ufw enable -y
 cd
-
+rm -rf BitSend
 echo '*** Done 3/5 ***'
 sleep 2
 echo '*** Step 4/5 ***'
@@ -92,6 +92,6 @@ systemctl start bitsendd
 sleep 60
 sudo -u bitsend bitsend-cli getinfo
 sleep 2
-echo 'Have fun with your Masternode !'
+echo 'Have fun with your Masternode !\nVisit our telegram channel at t.me/BSD_bitsend'
 sleep 2
 echo '*** Done 5/5 ***'
