@@ -74,7 +74,7 @@ ufw limit ssh/tcp
 ufw allow 8886/tcp
 ufw default deny incoming 
 ufw default allow outgoing 
-echo 'PRESS ENTER!'
+echo 'PRESS y & ENTER!'
 ufw enable
 sleep 2
 echo '*** Done 5/10 ***'
