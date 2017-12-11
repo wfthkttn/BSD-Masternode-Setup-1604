@@ -105,7 +105,7 @@ sudo -u bitsend rm bootstrap.tar.gz
 sleep 2
 echo '*** Done 8/10 ***'
 sleep 2
-echo '*** Step 9/10 - Downloading bootstrap file ***'
+echo '*** Step 9/10 - Starting Bitsend Service ***'
 sleep 2
 systemctl start bitsendd
 sleep 2
