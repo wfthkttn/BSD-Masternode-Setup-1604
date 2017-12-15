@@ -25,6 +25,6 @@ will be equal to "Current numbers of blocks" in local wallet (gui - help>debug>i
 After server restarts - you are free to enable masternode in local wallet.
 
 
-**Visit us at [Telegram](https://t.me/BSD_Bitsend)
+**Visit us at [Telegram](https://t.me/BSD_Bitsend)**
 
-**And dont hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.
+**And dont hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.**
