@@ -11,6 +11,7 @@ Login as root, then do:
 `./bsdsetup.sh`
 
 
+
 To enable firewall, you have to manually reboot server when blockchain is fully loaded!
 
 Its loaded when "height" in message:
@@ -24,5 +25,6 @@ will be equal to "Current numbers of blocks" in local wallet (gui - help>debug>i
 After server restarts - you are free to enable masternode in local wallet.
 
 
-Visit us at [Telegram](https://t.me/BSD_Bitsend)
-Dont hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.
+**Visit us at [Telegram](https://t.me/BSD_Bitsend)
+
+**And dont hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.
