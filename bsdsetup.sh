@@ -111,8 +111,10 @@ sleep 2
 systemctl start bitsendd
 sleep 2
 echo 'BitSend Masternode installed! Weeee!'
-sleep 2
+sleep 8
 echo '*** Done 9/10 ***'
+sleep 4
+clear
 sleep 2
 echo '*** Step 10/10 - Get ready for network rewards! ***'
 sleep 4
