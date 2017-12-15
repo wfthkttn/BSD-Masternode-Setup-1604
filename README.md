@@ -20,6 +20,7 @@ Its loaded when "height" in message:
 
 
 will be equal to "Current numbers of blocks" in local wallet (gui - help>debug>information).
+
 After server restarts - you are free to enable masternode in local wallet.
 
 
