@@ -108,6 +108,7 @@ echo '*** Done 8/10 ***'
 sleep 2
 echo '*** Step 9/10 - Starting Bitsend Service ***'
 sleep 2
+systemctl enable bitsendd
 systemctl start bitsendd
 sleep 2
 echo 'BitSend Masternode installed! Weeee!'
