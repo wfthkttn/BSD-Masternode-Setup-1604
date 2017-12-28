@@ -54,7 +54,7 @@ sleep 2
 echo '*** Step 4/10 - Cloning and Compiling BitSend Wallet ***'
 sleep 2
 cd
-git clone --branch Bitsend-v0.14 --depth 1 https://github.com/LIMXTEC/BitSend 
+git clone --branch v0.14 --depth 1 https://github.com/LIMXTEC/BitSend 
 cd BitSend
 ./autogen.sh
 ./configure
