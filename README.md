@@ -27,4 +27,7 @@ After server restarts - you are free to enable masternode in local wallet.
 
 **Visit us at [Telegram](https://t.me/BSD_Bitsend)**
 
-**And dont hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.**
+**Don't hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.**
+
+If you want to support me, use my [refferal](https://www.vultr.com/?ref=7146997) or donate BSD directly - iJbLfK35hwpzLNvuSRsXxz9XjEEw8ajceV
+:3
