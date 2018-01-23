@@ -123,7 +123,8 @@ echo 'You need to reboot server after you see message like:'
 echo '2018-01-32 24:61:61 UpdateTip: new best=0000000001602844h6h46649ab3cc7d66969e80b2cd970773d355a97bb9ac height=407633 version=0x20000000 log2_work=55.377649 tx=570794 date='2017-12-20 16:26:23' progress=1.000000 cache=0.0MiB(188tx)'
 echo 'where "height" equals to "Current numbers of blocks" in local wallet (help>debug>information).'
 echo 'After server restarts - you are free to enable masternode on local wallet.'
-sleep 20
+sleep 5
 echo 'Now go, and visit our telegram channel at t.me/BSD_bitsend, tell us how its going!'
-sleep 100
+echo ' '
+read -p "Press enter to monitor debug.log"
 tail -f debug.log
