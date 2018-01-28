@@ -43,8 +43,8 @@ echo '*** Done 2/10 ***'
 echo '*** Step 3/10 - Running updates and installing required packages ***'
 apt-get update -y
 apt-get dist-upgrade -y
-apt-get -y build-essential libtool autotools-dev autoconf automake pkg-config \
-libssl-dev libboost-all-dev git libminiupnpc-dev libevent-dev
+apt-get install build-essential libtool autotools-dev autoconf automake pkg-config -y \
+libssl-dev libboost-all-dev git libminiupnpc-dev libevent-dev -y
 add-apt-repository ppa:bitcoin/bitcoin -y
 apt-get update -y
 apt-get upgrade -y
@@ -85,10 +85,12 @@ echo '*** Step 7/10 - Adding bitsend daemoon as a service ***'
 mkdir /usr/lib/systemd/system
 echo -e "[Unit]\nDescription=BitSend's distributed currency daemon\nAfter=network.target\n\n[Service]\nUser=bitsend\nGroup=bitsend\n\nType=forking\nPIDFile=/home/bitsend/.bitsend/bitsendd.pid\n\nExecStart=/usr/local/bin/bitsendd -daemon -disablewallet -pid=/home/bitsend/.bitsend/bitsendd.pid \\n          -conf=/home/bitsend/.bitsend/bitsend.conf -datadir=/home/bitsend/.bitsend/\n\nExecStop=-/usr/local/bin/bitsend-cli -conf=/home/bitsend/.bitsend/bitsend.conf \\n         -datadir=/home/bitsend/.bitsend/ stop\n\nRestart=always\nPrivateTmp=true\nTimeoutStopSec=60s\nTimeoutStartSec=2s\nStartLimitInterval=120s\nStartLimitBurst=5\n\n[Install]\nWantedBy=multi-user.target\n" > /usr/lib/systemd/system/bitsendd.service
 echo '*** Done 7/10 ***'
-echo '*** Step 8/10 - Downloading bootstrap file ***'
+echo '*** Step 8/10 - Downloading bootstrap file***'
+if [ "$(curl -Is https://www.mybitsend.com/bootstrap.tar.gz | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then
 sudo -u bitsend wget https://www.mybitsend.com/bootstrap.tar.gz
 sudo -u bitsend tar -xvzf bootstrap.tar.gz
 sudo -u bitsend rm bootstrap.tar.gz
+fi
 echo '*** Done 8/10 ***'
 echo '*** Step 9/10 - Starting Bitsend Service ***'
 systemctl enable bitsendd
