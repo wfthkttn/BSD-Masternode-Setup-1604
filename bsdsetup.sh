@@ -78,7 +78,7 @@ yes | ufw enable
 echo '*** Done 5/10 ***'
 echo '*** Step 6/10 - Configure bitsend.conf ***'
 sudo -u bitsend mkdir /home/bitsend/.bitsend
-sudo -u bitsend echo -e "rpcuser=bsdmasternode$(openssl rand -base64 32) \nrpcpassword=$(openssl rand -base64 32) \nrpcallowip=127.0.0.1 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \npromode=1 \nmasternodeprivkey=$mngenkey \naddnode=107.170.2.241 \naddnode=45.58.51.22 \naddnode=104.207.131.249 \naddnode=68.197.13.94 \naddnode=109.30.168.16 \naddnode=31.41.247.133 \naddnode=37.120.190.76 \n" > /home/bitsend/.bitsend/bitsend.conf
+sudo -u bitsend echo -e "rpcuser=bsdmasternode$(openssl rand -base64 32) \nrpcpassword=$(openssl rand -base64 32) \nrpcallowip=127.0.0.1 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \nmasternode=1 \nmnconflock=0 \npromode=1 \nmasternodeprivkey=$mngenkey \naddnode=107.170.2.241 \naddnode=45.58.51.22 \naddnode=104.207.131.249 \naddnode=68.197.13.94 \naddnode=109.30.168.16 \naddnode=31.41.247.133 \naddnode=37.120.190.76 \n" > /home/bitsend/.bitsend/bitsend.conf
 cd /home/bitsend/.bitsend
 echo '*** Done 6/10 ***'
 echo '*** Step 7/10 - Adding bitsend daemoon as a service ***'
