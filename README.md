@@ -1,4 +1,4 @@
-**Rewrite for Ununtu 16.04**
+**Rewrite for Ununtu 16.04 + fresh bootstrap to sync within minutes**
 
 You will need masternode genkey output and fresh password for new bitsend user.
 
