@@ -86,8 +86,8 @@ mkdir /usr/lib/systemd/system
 echo -e "[Unit]\nDescription=BitSend's distributed currency daemon\nAfter=network.target\n\n[Service]\nUser=bitsend\nGroup=bitsend\n\nType=forking\nPIDFile=/home/bitsend/.bitsend/bitsendd.pid\n\nExecStart=/usr/local/bin/bitsendd -daemon -disablewallet -pid=/home/bitsend/.bitsend/bitsendd.pid \\n          -conf=/home/bitsend/.bitsend/bitsend.conf -datadir=/home/bitsend/.bitsend/\n\nExecStop=-/usr/local/bin/bitsend-cli -conf=/home/bitsend/.bitsend/bitsend.conf \\n         -datadir=/home/bitsend/.bitsend/ stop\n\nRestart=always\nPrivateTmp=true\nTimeoutStopSec=60s\nTimeoutStartSec=2s\nStartLimitInterval=120s\nStartLimitBurst=5\n\n[Install]\nWantedBy=multi-user.target\n" > /usr/lib/systemd/system/bitsendd.service
 echo '*** Done 7/10 ***'
 echo '*** Step 8/10 - Downloading bootstrap file***'
-if [ "$(curl -Is https://www.mybitsend.com/bootstrap.tar.gz | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then
-sudo -u bitsend wget https://www.mybitsend.com/bootstrap.tar.gz
+if [ "$(curl -Is 207.246.121.232:1337/bootstrap.tar.gz | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then
+sudo -u bitsend wget 207.246.121.232:1337/bootstrap.tar.gz
 sudo -u bitsend tar -xvzf bootstrap.tar.gz
 sudo -u bitsend rm bootstrap.tar.gz
 fi
