@@ -1,5 +1,4 @@
 # BitSend (BSD) Masternode - Build Docker Image
-# BitSend Repo : https://github.com/LIMXTEC/BitSend
 
 The Dockerfile will install all required stuff to run a BitSend (BSD) Masternode and is based on script bsdsetup.sh (see: https://github.com/dArkjON/BSD-Masternode-Setup-1604/blob/master/bsdsetup.sh)
 
