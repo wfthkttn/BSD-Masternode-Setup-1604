@@ -76,9 +76,6 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libdb4.8++-dev && \
     echo '*** Done 3/10 ***'
 
-# TODO: echo -n "Enter your masternode genkey respond and Hit [ENTER]: "
-# read mngenkey
-
 #
 # Step 4/10 - Cloning and Compiling BitSend Wallet
 #
