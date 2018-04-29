@@ -1,10 +1,10 @@
-# BitCore RPC Server - Dockerfile (04-2018)
+# BitSend (BSD) Masternode - Dockerfile (05-2018)
 #
-# This Dockerfile will install all required stuff to run a BitCore RPC Server and is based on script btxsetup.sh (see: https://github.com/dArkjON/Bitcore-BTX-RPC-Installer/blob/master/btxsetup.sh)
-# BitCore Repo : https://github.com/LIMXTEC/BitCore/
-# E-Mail: info@bitcore.cc
+# The Dockerfile will install all required stuff to run a BitSend (BSD) Masternode and is based on script bsdsetup.sh (see: https://github.com/dArkjON/BSD-Masternode-Setup-1604/blob/master/bsdsetup.sh)
+# BitSend Repo : https://github.com/LIMXTEC/BitSend
+# E-Mail: info@bitsend.info
 # 
-# To build a docker image for btx-rpc-server from the Dockerfile the bitcore.conf is also needed.
+# To build a docker image for bsd-masternode from the Dockerfile the bitsend.conf is also needed.
 # See BUILD_README.md for further steps.
 
 # Use an official Ubuntu runtime as a parent image
@@ -14,7 +14,7 @@ LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
 LABEL version="0.1"
 
 # Make ports available to the world outside this container
-EXPOSE 8555 9051 40332
+EXPOSE 8886 8800
 
 USER root
 
@@ -22,19 +22,19 @@ USER root
 SHELL ["/bin/bash", "-c"]
 
 # Define environment variable
-ENV BTXPWD "bitcore"
+ENV BTXPWD "bitsend"
 
-RUN echo '******************************' && \
-    echo '*** BitCore BTX RPC Server ***' && \
-    echo '******************************'
+RUN echo '********************************' && \
+    echo '*** BitSend (BSD) Masternode ***' && \
+    echo '********************************'
 
 #
-# Step 1/10 - creating bitcore user
+# Step 1/10 - creating bitsend user
 #
-RUN echo '*** Step 1/10 - creating bitcore user ***' && \
-    adduser --disabled-password --gecos "" bitcore && \
-    usermod -a -G sudo,bitcore bitcore && \
-    echo bitcore:$BTXPWD | chpasswd && \
+RUN echo '*** Step 1/10 - creating bitsend user ***' && \
+    adduser --disabled-password --gecos "" bitsend && \
+    usermod -a -G sudo,bitsend bitsend && \
+    echo bitsend:$BSDPWD | chpasswd && \
     echo '*** Done 1/10 ***'
 
 #
@@ -62,9 +62,9 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libminiupnpc-dev \
                         libssl-dev \
                         libtool \
-                        libzmq5-dev \
+                        #libzmq5-dev \
                         pkg-config \
-                        software-properties-common \
+                        #software-properties-common \
                         sudo \
                         supervisor \
                         vim \
@@ -76,26 +76,29 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libdb4.8++-dev && \
     echo '*** Done 3/10 ***'
 
+# TODO: echo -n "Enter your masternode genkey respond and Hit [ENTER]: "
+# read mngenkey
+
 #
-# Step 4/10 - Cloning and Compiling BitCore Wallet
+# Step 4/10 - Cloning and Compiling BitSend Wallet
 #
-RUN echo '*** Step 4/10 - Cloning and Compiling BitCore Wallet ***' && \
+RUN echo '*** Step 4/10 - Cloning and Compiling BitSend Wallet ***' && \
     cd && \
-    echo "Execute a git clone of LIMXTEC/BitCore. Please wait..." && \
-    git clone https://github.com/LIMXTEC/BitCore.git && \
-    cd BitCore && \
+    echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
+    git clone --branch v0.14 --depth 1 https://github.com/LIMXTEC/BitSend && \
+    cd BitSend && \
     ./autogen.sh && \
-    ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening && \
+    ./configure --disable-dependency-tracking --enable-tests=no --without-gui && \
     make && \
     cd && \
-    cd BitCore/src && \
-    strip bitcored && \
-    cp bitcored /usr/local/bin && \
-    strip bitcore-cli && \
-    cp bitcore-cli /usr/local/bin && \
-    chmod 775 /usr/local/bin/bitcore* && \
+    cd BitSend/src && \
+    strip bitsendd && \
+    cp bitsendd /usr/local/bin && \
+    strip bitsend-cli && \
+    cp bitsend-cli /usr/local/bin && \
+    chmod 775 /usr/local/bin/bitsend* && \   
     cd && \
-    rm -rf BitCore && \
+    rm -rf BitSend && \
     echo '*** Done 4/10 ***'
 
 #
@@ -106,19 +109,19 @@ RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
     echo '*** Done 5/10 ***'
 
 #
-# Step 6/10 - Configure bitcore.conf
+# Step 6/10 - Configure bitsend.conf
 #
-COPY bitcore.conf /tmp
-RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \
-    chown bitcore:bitcore /tmp/bitcore.conf && \
-    sudo -u bitcore mkdir -p /home/bitcore/.bitcore && \
-    sudo -u bitcore mv /tmp/bitcore.conf /home/bitcore/.bitcore/ && \
+COPY bitsend.conf /tmp
+RUN echo '*** Step 6/10 - Configure bitsend.conf ***' && \
+    chown bitsend:bitsend /tmp/bitsend.conf && \
+    sudo -u bitsend mkdir -p /home/bitsend/.bitsend && \
+    sudo -u bitsend mv /tmp/bitsend.conf /home/bitsend/.bitsend/ && \
     echo '*** Done 6/10 ***'
 
 #
-# Step 7/10 - Adding bitcore daemon as a service
+# Step 7/10 - Adding bitsendd daemon as a service
 #
-RUN echo '*** Step 7/10 - Adding bitcore daemon ***' && \
+RUN echo '*** Step 7/10 - Adding bitsendd daemon ***' && \
     echo 'docker not supported systemd: skipped' && \
     echo '*** Done 7/10 ***'
 
