@@ -22,7 +22,7 @@ USER root
 SHELL ["/bin/bash", "-c"]
 
 # Define environment variable
-ENV BTXPWD "bitsend"
+ENV BSDPWD "bitsend"
 
 RUN echo '********************************' && \
     echo '*** BitSend (BSD) Masternode ***' && \
@@ -62,9 +62,9 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libminiupnpc-dev \
                         libssl-dev \
                         libtool \
-                        #libzmq5-dev \
+                        libzmq5-dev \
                         pkg-config \
-                        #software-properties-common \
+                        software-properties-common \
                         sudo \
                         supervisor \
                         vim \
