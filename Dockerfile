@@ -112,7 +112,7 @@ COPY bitsend.conf /tmp
 RUN echo '*** Step 6/10 - Configure bitsend.conf ***' && \
     chown bitsend:bitsend /tmp/bitsend.conf && \
     sudo -u bitsend mkdir -p /home/bitsend/.bitsend && \
-    sudo -u bitsend mv /tmp/bitsend.conf /home/bitsend/.bitsend/ && \
+    sudo -u bitsend cp /tmp/bitsend.conf /home/bitsend/.bitsend/ && \
     echo '*** Done 6/10 ***'
 
 #
