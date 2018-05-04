@@ -6,7 +6,7 @@ The Dockerfile will install all required stuff to run a BitSend (BSD) Masternode
 - Linux Ubuntu 16.04 LTS
 - Running as docker host server (package docker.io installed)
 ```
-apt-get update -y
+apt-get update
 apt-get upgrade -y
 apt-get install docker.io -y
 ```
