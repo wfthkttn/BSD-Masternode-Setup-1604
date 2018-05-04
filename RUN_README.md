@@ -7,7 +7,7 @@ docker pull <repository>/bsd-masternode
 
 ### (2) Run docker container
 ```
-docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw -d <repository>/bsd-masternode
+docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw -d <repository>/bsd-masternode
 docker ps
 ```
 
@@ -29,7 +29,7 @@ docker exec -it bsd-masternode bash
 
 ### (4) Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw --entrypoint bash <repository>/bsd-masternode
+docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw --entrypoint bash <repository>/bsd-masternode
 ```
 
 ### (5) Stop docker container
