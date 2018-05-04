@@ -26,18 +26,6 @@ mkswap /swapfile
 swapon /swapfile
 ```
 
-## Adding firewall rules
-Open needed ports on your docker host server.
-```
-ufw logging on
-ufw allow 22/tcp
-ufw limit 22/tcp
-ufw allow 8886/tcp
-ufw default deny incoming 
-ufw default allow outgoing 
-yes | ufw enable
-```
-
 ## Build docker image
 ```
 docker build [--build-arg BSDPWD='<bitsend user pwd>'] -t bsd-masternode .
