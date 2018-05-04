@@ -1,18 +1,30 @@
 # BitSend (BSD) Masternode - Run Docker Image
 
-### (1) Pull docker image
+## (1) Adding firewall rules
+Open needed ports on your docker host server.
+```
+ufw logging on
+ufw allow 22/tcp
+ufw limit 22/tcp
+ufw allow 8886/tcp
+ufw default deny incoming 
+ufw default allow outgoing 
+yes | ufw enable
+```
+
+### (2) Pull docker image
 ```
 docker pull <repository>/bsd-masternode
 ```
 
-### (2) Run docker container
+### (3) Run docker container
 ```
 docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw -d <repository>/bsd-masternode
 docker ps
 ```
 
-### (3) Debbuging within a container (after start.sh execution)
-Please execute "docker run" in (2) before you execute this commands:
+### (4) Debbuging within a container (after start.sh execution)
+Please execute "docker run" in (3) before you execute this commands:
 ```
 tail -f /home/bitsend/.bitsend/debug.log
 
@@ -27,12 +39,12 @@ docker exec -it bsd-masternode bash
   bitsend@container# bitsend-cli getinfo
 ```
 
-### (4) Debbuging within a container during run (skip start.sh execution)
+### (5) Debbuging within a container during run (skip start.sh execution)
 ```
 docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw --entrypoint bash <repository>/bsd-masternode
 ```
 
-### (5) Stop docker container
+### (6) Stop docker container
 ```
 docker stop bsd-masternode
 docker rm bsd-masternode
