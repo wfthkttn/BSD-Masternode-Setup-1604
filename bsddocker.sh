@@ -2,7 +2,7 @@
 set -u
 
 #
-# Set bsd user pwd and masternode genkey
+# Set bitsend user pwd and masternode genkey
 #
 echo '*** Step 0/10 - User input ***'
 echo -n "Enter new password for [bitsend] user and Hit [ENTER]: "
