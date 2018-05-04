@@ -7,6 +7,7 @@ ufw logging on
 ufw allow 22/tcp
 ufw limit 22/tcp
 ufw allow 8886/tcp
+ufw allow 8800/tcp
 ufw default deny incoming 
 ufw default allow outgoing 
 yes | ufw enable
