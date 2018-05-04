@@ -41,8 +41,8 @@ chmod +x bsddocker.sh
 * BSD-Masternode-Setup-1604/RUN_README.md
 
 
-# Visit us at [Telegram](https://t.me/BSD_Bitsend)
+## Visit us at [Telegram](https://t.me/BSD_Bitsend)
 
-# Don't hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.**
+## Don't hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.**
 
 BSD - iJbLfK35hwpzLNvuSRsXxz9XjEEw8ajceV:3
