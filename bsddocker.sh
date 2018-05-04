@@ -33,5 +33,5 @@ apt-get update
 apt-get upgrade -y
 apt-get install docker.io
 apt-get install docker.io -y
-docker pull ${DOCKER_REPO}/btx-rpc-server
+docker pull ${DOCKER_REPO}/bsd-masternode
 docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD='${PWD}' -e MN_KEY='${MN_KEY}' -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
