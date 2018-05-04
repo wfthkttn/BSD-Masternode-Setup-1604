@@ -1,6 +1,6 @@
 # BitSend (BSD) Masternode - Run Docker Image
 
-## (1) Adding firewall rules
+### (1) Adding firewall rules
 Open needed ports on your docker host server.
 ```
 ufw logging on
