@@ -43,6 +43,6 @@ chmod +x bsddocker.sh
 
 ## Visit us at [Telegram](https://t.me/BSD_Bitsend)
 
-## Don't hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.**
+## Don't hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.
 
 BSD - iJbLfK35hwpzLNvuSRsXxz9XjEEw8ajceV:3
