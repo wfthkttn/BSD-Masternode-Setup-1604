@@ -31,5 +31,5 @@ printf "*** Done 8/10 ***"
 # Step 9/10 - Starting BitSend Service
 #
 # Hint: docker not supported systemd, use of supervisord
-printf "*** Step 9/10 - Starting BitSend Service ***\n"
+printf "*** Step 9/10 - Starting BitSend Service ***"
 exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
