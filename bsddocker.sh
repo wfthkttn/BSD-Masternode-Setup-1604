@@ -44,5 +44,6 @@ yes | ufw enable
 apt-get update
 apt-get upgrade -y
 apt-get install docker.io -y
+apt autoremove -y
 docker pull ${DOCKER_REPO}/bsd-masternode
 docker run --rm -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw ${DOCKER_REPO}/bsd-masternode
