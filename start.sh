@@ -21,7 +21,7 @@ sed -i "s/^\(masternodeprivkey=\).*/\masternodeprivkey=${MN_KEY}/" /home/bitsend
 #
 printf "** Step 8/10 - Downloading bootstrap file ***"
 cd /home/bitsend/.bitsend/
-if if [ ! -d /home/bitsend/.bitsend/blocks ] && [ "$(curl -Is https://www.mybitsend.com/${BOOTSTRAP} | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
+if [ ! -d /home/bitsend/.bitsend/blocks ] && [ "$(curl -Is https://www.mybitsend.com/${BOOTSTRAP} | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
         sudo -u bitsend wget https://www.mybitsend.com/${BOOTSTRAP}; \
         sudo -u bitsend tar -xvzf ${BOOTSTRAP}; \
 fi
