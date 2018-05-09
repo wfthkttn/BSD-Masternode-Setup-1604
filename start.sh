@@ -24,6 +24,7 @@ cd /home/bitsend/.bitsend/
 if [ ! -d /home/bitsend/.bitsend/blocks ] && [ "$(curl -Is https://www.mybitsend.com/${BOOTSTRAP} | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
         sudo -u bitsend wget https://www.mybitsend.com/${BOOTSTRAP}; \
         sudo -u bitsend tar -xvzf ${BOOTSTRAP}; \
+        sudo -u bitsend rm ${BOOTSTRAP}; \
 fi
 printf "*** Done 8/10 ***"
 
