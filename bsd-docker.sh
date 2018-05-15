@@ -39,11 +39,27 @@ ufw default allow outgoing
 yes | ufw enable
 
 #
-# Installation of docker package
+# Installation of docker-ce package (Ubuntu 16.04)
 #
 apt-get update
-apt-get upgrade -y
-apt-get install docker.io -y
-apt autoremove -y
+sudo apt-get remove -y docker \
+                       docker-engine \
+                       docker.io
+sudo apt-get install -y apt-transport-https \
+                        ca-certificates \
+                        curl \
+                        software-properties-common
+cd /root
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce -y
+
+#
+# Pull docker images and run the docker container
+#
 docker pull ${DOCKER_REPO}/bsd-masternode
 docker run --rm -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw ${DOCKER_REPO}/bsd-masternode
