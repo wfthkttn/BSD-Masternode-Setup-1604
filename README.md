@@ -31,9 +31,9 @@ Support for the following distribution versions:
 Login as root, then do:
 
 ```
-wget https://raw.githubusercontent.com/wfthkttn/BSD-Masternode-Setup-1604/master/bsddocker.sh
-chmod +x bsddocker.sh
-./bsddocker.sh
+wget https://raw.githubusercontent.com/wfthkttn/BSD-Masternode-Setup-1604/master/bsd-docker.sh
+chmod +x bsd-docker.sh
+./bsd-docker.sh
 ```
 
 ### For more details to docker related stuff have a look at:
