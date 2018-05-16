@@ -106,16 +106,6 @@ RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
     echo '*** Done 5/10 ***'
 
 #
-# Step 6/10 - Configure bitsend.conf
-#
-COPY bitsend.conf /tmp
-RUN echo '*** Step 6/10 - Configure bitsend.conf ***' && \
-    chown bitsend:bitsend /tmp/bitsend.conf && \
-    sudo -u bitsend mkdir -p /home/bitsend/.bitsend && \
-    sudo -u bitsend cp /tmp/bitsend.conf /home/bitsend/.bitsend/ && \
-    echo '*** Done 6/10 ***'
-
-#
 # Step 7/10 - Adding bitsendd daemon as a service
 #
 RUN echo '*** Step 7/10 - Adding bitsendd daemon ***' && \
@@ -123,9 +113,10 @@ RUN echo '*** Step 7/10 - Adding bitsendd daemon ***' && \
     echo '*** Done 7/10 ***'
 
 #
-# Supervisor Configuration
+# Copy Supervisor Configuration and bitcore.conf
 #
 COPY *.sv.conf /etc/supervisor/conf.d/
+COPY bitsend.conf /tmp
 
 #
 # Logging outside docker container
