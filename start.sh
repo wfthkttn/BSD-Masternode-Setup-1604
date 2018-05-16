@@ -27,7 +27,6 @@ if [ ! -d /home/bitsend/.bitsend/blocks ] && [ "$(curl -Is https://www.mybitsend
         sudo -u bitsend tar -xvzf ${BOOTSTRAP}; \
         sudo -u bitsend rm ${BOOTSTRAP}; \
 fi
-printf "*** Done 8/10 ***"
 
 #
 # Step Starting BitSend Service
