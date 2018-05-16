@@ -11,7 +11,7 @@
 FROM ubuntu:16.04
 
 LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
-LABEL version="0.1"
+LABEL version="0.2"
 
 # Make ports available to the world outside this container
 EXPOSE 8886 8800
@@ -24,30 +24,20 @@ SHELL ["/bin/bash", "-c"]
 # Define environment variable
 ENV BSDPWD "bitsend"
 
-RUN echo '********************************' && \
-    echo '*** BitSend (BSD) Masternode ***' && \
-    echo '********************************'
+RUN echo '*** BitSend (BSD) Masternode ***'
 
 #
-# Step 1/10 - creating bitsend user
+# Creating bitsend user
 #
-RUN echo '*** Step 1/10 - creating bitsend user ***' && \
+RUN echo '*** Creating bitsend user ***' && \
     adduser --disabled-password --gecos "" bitsend && \
     usermod -a -G sudo,bitsend bitsend && \
-    echo bitsend:$BSDPWD | chpasswd && \
-    echo '*** Done 1/10 ***'
+    echo bitsend:$BSDPWD | chpasswd
 
 #
-# Step 2/10 - Allocating 2GB Swapfile
+# Running updates and installing required packages
 #
-RUN echo '*** Step 2/10 - Allocating 2GB Swapfile ***' && \
-    echo 'not needed: skipped' && \
-    echo '*** Done 2/10 ***'
-
-#
-# Step 3/10 - Running updates and installing required packages
-#
-RUN echo '*** Step 3/10 - Running updates and installing required packages ***' && \
+RUN echo '*** Running updates and installing required packages ***' && \
     apt-get update -y && \
     apt-get dist-upgrade -y && \
     apt-get install -y  apt-utils \
@@ -73,13 +63,12 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
     apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y  libdb4.8-dev \
-                        libdb4.8++-dev && \
-    echo '*** Done 3/10 ***'
+                        libdb4.8++-dev
 
 #
-# Step 4/10 - Cloning and Compiling BitSend Wallet
+# Cloning and Compiling BitSend Wallet
 #
-RUN echo '*** Step 4/10 - Cloning and Compiling BitSend Wallet ***' && \
+RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
     cd && \
     echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
     git clone --branch v0.14 --depth 1 https://github.com/LIMXTEC/BitSend && \
@@ -95,26 +84,12 @@ RUN echo '*** Step 4/10 - Cloning and Compiling BitSend Wallet ***' && \
     cp bitsend-cli /usr/local/bin && \
     chmod 775 /usr/local/bin/bitsend* && \   
     cd && \
-    rm -rf BitSend && \
-    echo '*** Done 4/10 ***'
-
-#
-# Step 5/10 - Adding firewall rules
-#
-RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
-    echo 'must be configured on the socker host: skipped' && \
-    echo '*** Done 5/10 ***'
-
-#
-# Step 7/10 - Adding bitsendd daemon as a service
-#
-RUN echo '*** Step 7/10 - Adding bitsendd daemon ***' && \
-    echo 'docker not supported systemd: skipped' && \
-    echo '*** Done 7/10 ***'
+    rm -rf BitSend
 
 #
 # Copy Supervisor Configuration and bitcore.conf
 #
+RUN echo '*** Copy Supervisor Configuration and bitcore.conf ***'
 COPY *.sv.conf /etc/supervisor/conf.d/
 COPY bitsend.conf /tmp
 
@@ -124,12 +99,12 @@ COPY bitsend.conf /tmp
 VOLUME /var/log
 
 #
-# Start script
+# Copy start script
 #
+RUN echo '*** Copy start script ***'
 COPY start.sh /usr/local/bin/start.sh
-RUN \
-  rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
-  chmod 755 /usr/local/bin/*
+RUN rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
+    chmod 755 /usr/local/bin/*
 
 ENV TERM linux
 CMD ["/usr/local/bin/start.sh"]
