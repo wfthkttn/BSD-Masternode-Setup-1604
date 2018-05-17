@@ -89,4 +89,4 @@ sudo apt-get install docker-ce -y
 # Pull docker images and run the docker container
 #
 docker pull ${DOCKER_REPO}/bsd-masternode
-docker run --rm -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw ${DOCKER_REPO}/bsd-masternode
+docker run --rm -p 8886:8886 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw ${DOCKER_REPO}/bsd-masternode
