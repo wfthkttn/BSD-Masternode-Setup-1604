@@ -87,9 +87,9 @@ RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
     rm -rf BitSend
 
 #
-# Copy Supervisor Configuration and bitcore.conf
+# Copy Supervisor Configuration and bitsend.conf
 #
-RUN echo '*** Copy Supervisor Configuration and bitcore.conf ***'
+RUN echo '*** Copy Supervisor Configuration and bitsend.conf ***'
 COPY *.sv.conf /etc/supervisor/conf.d/
 COPY bitsend.conf /tmp
 
