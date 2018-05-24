@@ -2,14 +2,28 @@
 set -u
 
 DOCKER_REPO="dalijolijo"
+CONFIG="/home/bitsend/.bitsend/bitsend.conf"
 
 #
-# Set bitsend user pwd and masternode genkey
+# Check if bitsend.conf already exist. Set bitsend user pwd and masternode genkey
 #
-echo -n "Enter new password for [bitsend] user and Hit [ENTER]: "
-read BSDPWD
-echo -n "Enter your masternode genkey respond and Hit [ENTER]: "
-read MN_KEY
+REUSE="No"
+if [ -f "$CONFIG" ]
+then
+        echo -n "Found $CONFIG on your system. Do you want to re-use this existing config file? Enter Yes or No and Hit [ENTER]: "
+        read REUSE
+fi
+
+if [[ $REUSE =~ "N" ]] || [[ $REUSE =~ "n" ]]; then
+        echo -n "Enter new password for [bitsend] user and Hit [ENTER]: "
+        read BSDPWD
+        echo -n "Enter your bitsend masternode genkey respond and Hit [ENTER]: "
+        read MN_KEY
+else
+        source $CONFIG
+        BSDPWD=$(echo $rpcpassword)
+        MN_KEY=$(echo $masternodeprivkey)
+fi
 
 #
 # Check distro version for further configurations (TODO)
@@ -75,5 +89,6 @@ fi
 #
 # Pull docker images and run the docker container
 #
+docker rm bsd-masternode
 docker pull ${DOCKER_REPO}/bsd-masternode
 docker run -p 8886:8886 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
