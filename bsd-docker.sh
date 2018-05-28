@@ -91,4 +91,4 @@ fi
 #
 docker rm bsd-masternode
 docker pull ${DOCKER_REPO}/bsd-masternode
-docker run -p 8886:8886 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
+docker run -p 8800:8800 -p 8886:8886 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
