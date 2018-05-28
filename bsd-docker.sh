@@ -69,6 +69,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
     ufw limit 22/tcp
     ufw allow 8886/tcp
     ufw allow 8800/tcp
+    ufw allow 9051/tcp
     # if other services run on other ports, they will be blocked!
     #ufw default deny incoming 
     ufw default allow outgoing 
@@ -83,7 +84,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
                             software-properties-common
 else
     echo "Automated firewall setup for $OS ($VER) not supported!"
-    echo "Please open firewall ports 22, 8800 and 8886 manually."
+    echo "Please open firewall ports 22, 8800, 8886 and 9051 manually."
 fi
 
 #
@@ -91,4 +92,4 @@ fi
 #
 docker rm bsd-masternode
 docker pull ${DOCKER_REPO}/bsd-masternode
-docker run -p 8800:8800 -p 8886:8886 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
+docker run -p 8800:8800 -p 8886:8886 -p 9051:9051 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
