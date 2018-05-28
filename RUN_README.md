@@ -8,6 +8,7 @@ ufw allow 22/tcp
 ufw limit 22/tcp
 ufw allow 8886/tcp
 ufw allow 8800/tcp
+ufw allow 9051/tcp
 ufw default deny incoming 
 ufw default allow outgoing 
 yes | ufw enable
@@ -20,7 +21,7 @@ docker pull <repository>/bsd-masternode
 
 ## Run docker container
 ```
-docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw -d <repository>/bsd-masternode
+docker run -p 8886:8886 -p 8800:8800 -p 9051:9051 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw -d <repository>/bsd-masternode
 docker ps
 ```
 
@@ -42,7 +43,7 @@ docker exec -it bsd-masternode bash
 
 ## Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 8886:8886 -p 8800:8800 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw --entrypoint bash <repository>/bsd-masternode
+docker run -p 8886:8886 -p 8800:8800 -p 9051:9051 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw --entrypoint bash <repository>/bsd-masternode
 ```
 
 ## Stop docker container
