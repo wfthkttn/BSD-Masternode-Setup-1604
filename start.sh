@@ -9,12 +9,18 @@ BOOTSTRAP='bootstrap.tar.gz'
 echo bitsend:${BSDPWD} | chpasswd
 
 #
+# Downloading bitsend.conf
+#
+cd /tmp/
+wget https://raw.githubusercontent.com/dalijolijo/BSD-Masternode-Setup/master/bitsend.conf -O /tmp/bitsend.conf
+chown bitsend:bitsend /tmp/bitsend.conf
+
+#
 # Set rpcuser, rpcpassword and masternode genkey
 #
 printf "** Set rpcuser, rpcpassword and masternode genkey ***\n"
 mkdir -p /home/bitsend/.bitsend
 chown -R bitsend:bitsend /home/bitsend
-chown bitsend:bitsend /tmp/bitsend.conf
 sudo -u bitsend cp /tmp/bitsend.conf /home/bitsend/.bitsend/
 sed -i "s/^\(rpcuser=\).*/rpcuser=bsdmasternode${BSDPWD}/" /home/bitsend/.bitsend/bitsend.conf
 sed -i "s/^\(rpcpassword=\).*/rpcpassword=${BSDPWD}/" /home/bitsend/.bitsend/bitsend.conf
