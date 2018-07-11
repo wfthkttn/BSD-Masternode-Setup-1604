@@ -87,7 +87,7 @@ echo -e "[Unit]\nDescription=BitSend's distributed currency daemon\nAfter=networ
 echo '*** Done 7/10 ***'
 echo '*** Step 8/10 - Downloading bootstrap file***'
 if [ "$(curl -Is 207.246.121.232:1337/bootstrap.tar.gz | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then
-sudo -u bitsend wget 207.246.121.232:1337/bootstrap.tar.gz
+sudo -u bitsend wget 207.246.121.232:1337/bootstrap.tar.gz --strip-components=2
 sudo -u bitsend tar -xvzf bootstrap.tar.gz
 sudo -u bitsend rm bootstrap.tar.gz
 fi
