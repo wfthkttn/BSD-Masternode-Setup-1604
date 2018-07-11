@@ -7,7 +7,7 @@ You will need masternode genkey output and fresh password for new bitsend user.
 
 Login as root, then do:
 ```
-wget https://raw.githubusercontent.com/wfthkttn/BSD-Masternode-Setup-1604/master/bsdsetup.sh
+wget https://raw.githubusercontent.com/dArkjON/BSD-Masternode-Setup-1604/master/bsdsetup.sh
 chmod +x bsdsetup.sh
 ./bsdsetup.sh
 ```
@@ -48,7 +48,7 @@ sudo curl -sSL https://get.docker.com | sh
 Login as root, then do:
 
 ```
-wget https://raw.githubusercontent.com/wfthkttn/BSD-Masternode-Setup-1604/master/bsd-docker.sh
+wget https://raw.githubusercontent.com/dArkjON/BSD-Masternode-Setup-1604/master/bsd-docker.sh
 chmod +x bsd-docker.sh
 ./bsd-docker.sh
 ```
@@ -61,5 +61,3 @@ chmod +x bsd-docker.sh
 ## Visit us at [Telegram](https://t.me/BSD_Bitsend)
 
 ## Don't hestitate to join [Discord channel](https://discord.gg/DNfazhS), share your thoughts and ideas with us.
-
-BSD - iJbLfK35hwpzLNvuSRsXxz9XjEEw8ajceV:3
